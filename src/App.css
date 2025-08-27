@@ -1,6 +1,12 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
   min-height: 100vh;
   background: linear-gradient(135deg, #00b4db, #0083b0);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -12,11 +18,11 @@ body {
 .weather-container {
   width: 100%;
   max-width: 500px;
-  margin: 1rem;
-  padding: 2rem;
+  margin: auto;
+  padding: clamp(1rem, 5vw, 2rem);
   text-align: center;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
+  border-radius: clamp(10px, 3vw, 20px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
@@ -29,18 +35,21 @@ h1 {
 }
 
 .search-form {
-  margin: 2rem 0;
+  margin: clamp(1rem, 3vw, 2rem) 0;
   display: flex;
-  gap: 1rem;
+  flex-direction: row;
+  gap: clamp(0.5rem, 2vw, 1rem);
   justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 .city-input {
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1rem;
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   border: 2px solid #e0e0e0;
   border-radius: 25px;
-  width: 250px;
+  width: min(100%, 250px);
   transition: all 0.3s ease;
   outline: none;
 }
@@ -51,8 +60,8 @@ h1 {
 }
 
 button {
-  padding: 0.8rem 1.8rem;
-  font-size: 1.1rem;
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   background: linear-gradient(135deg, #00b4db, #0083b0);
   color: white;
   border: none;
@@ -62,6 +71,7 @@ button {
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 button:hover {
@@ -86,26 +96,27 @@ button:disabled {
 }
 
 .weather-info {
-  margin-top: 2rem;
-  padding: 2rem;
+  margin-top: clamp(1.5rem, 4vw, 2rem);
+  padding: clamp(1rem, 4vw, 2rem);
   background: white;
-  border-radius: 20px;
+  border-radius: clamp(10px, 3vw, 20px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .weather-info h2 {
   color: #2c3e50;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  margin-bottom: clamp(0.8rem, 3vw, 1.5rem);
+  word-break: break-word;
 }
 
 .temperature {
-  margin: 2rem 0;
+  margin: clamp(1rem, 4vw, 2rem) 0;
   position: relative;
 }
 
 .temp {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 8vw, 4rem);
   font-weight: 700;
   color: #2c3e50;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -113,36 +124,37 @@ button:disabled {
 
 .description {
   display: block;
-  margin-top: 1rem;
+  margin-top: clamp(0.5rem, 2vw, 1rem);
   color: #5a7391;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   text-transform: capitalize;
   font-weight: 500;
 }
 
 .details {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
-  padding: 2rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: clamp(1.5rem, 4vw, 2rem);
+  padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1rem);
   border-top: 2px solid rgba(0, 0, 0, 0.05);
   background: rgba(0, 131, 176, 0.05);
-  border-radius: 15px;
+  border-radius: clamp(10px, 2vw, 15px);
 }
 
 .details p {
   margin: 0;
   color: #34495e;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   font-weight: 500;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: clamp(0.3rem, 1vw, 0.5rem);
+  padding: clamp(0.5rem, 2vw, 1rem);
 }
 
 .details p::before {
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   color: #7f8c8d;
   content: attr(data-label);
 }
